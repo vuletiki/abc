@@ -69,7 +69,7 @@ app.get('/take', function (req, res) {
 			});
 		});
 	})
-	res.send(file)
+	res.send(String(file))
 	// .then(renderTable);
 
 })
