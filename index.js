@@ -26,6 +26,7 @@ app.get('/take', function (req, res) {
 	const lighthouse = require("lighthouse");
 	const chromeLauncher = require("chrome-launcher");
 
+	var file = (new Date()).getTime() + Math.random()
 	function launchChromeAndRunLighthouse(url, opts, config = null) {
 		return chromeLauncher
 			.launch({ chromeFlags: opts.chromeFlags })
@@ -43,7 +44,6 @@ app.get('/take', function (req, res) {
 	};
 	launchChromeAndRunLighthouse(req.query.url, opts)
 	.then(data => {
-		var file = (new Date()).getTime() + Math.random()
 		var htmlFile = file + ".html";
 		var pngFile = file + ".png";
 		const html = ReportGenerator.generateReportHtml(data);
@@ -69,7 +69,7 @@ app.get('/take', function (req, res) {
 			});
 		});
 	})
-	res.send('ok')
+	res.send(file)
 	// .then(renderTable);
 
 })
