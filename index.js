@@ -46,6 +46,7 @@ app.get('/take', function (req, res) {
 	.then(data => {
 		var htmlFile = file + ".html";
 		var pngFile = file + ".png";
+		console.log(htmlFile)
 		const html = ReportGenerator.generateReportHtml(data);
 		fs.writeFile("public/" + htmlFile, html, function(err) {
 			take.fromURL('https://tikilighthouse.herokuapp.com/' + htmlFile, './public/' + pngFile, {clip: {x: 228, y: 134, width: 1046 - 228, height: 286 - 134},waitMilliseconds: 5000}, function(){
