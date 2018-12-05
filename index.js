@@ -145,4 +145,4 @@ app.get('/abc', function (req, res) {
 	// .then(renderTable);
 
 })
-app.listen(8080); //the server object listens on port 8080
+app.listen(process.env.PORT || 8080); //the server object listens on port 8080
