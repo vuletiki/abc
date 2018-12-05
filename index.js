@@ -35,6 +35,9 @@ app.get('/take', function (req, res) {
 				return lighthouse(url, opts, config).then(results => {
 					return chrome.kill().then(() => results.lhr);
 				});
+			})
+			.catch(err => {
+				console.log(err)
 			});
 	}
 
