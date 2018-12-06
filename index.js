@@ -44,7 +44,8 @@ app.get('/lookup', async function (req, res) {
 				path:'./public/' + pngFile,
 				clip: {x: 0, y: 134, width: 800, height: 160}
 			});
-			fetch('https://hooks.slack.com/services/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', {
+			
+			fetch('https://hooks.slack.com/services/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', {
 			    method: 'post',
 			    body: JSON.stringify({
 				    "attachments": [
