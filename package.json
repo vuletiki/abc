@@ -9,6 +9,7 @@
     "http": "^0.0.0",
     "lighthouse": "^4.0.0-alpha.2-3.2.1",
     "node-fetch": "^2.3.0",
-    "node-server-screenshot": "^0.2.1"
+    "node-server-screenshot": "^0.2.1",
+    "puppeteer": "^1.11.0"
   }
 }
