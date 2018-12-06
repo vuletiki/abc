@@ -52,7 +52,9 @@ app.get('/take', function (req, res) {
 		console.log(htmlFile)
 		const html = ReportGenerator.generateReportHtml(data);
 		fs.writeFile("public/" + htmlFile, html, function(err) {
-			take.fromURL('https://tikilighthouse.herokuapp.com/' + htmlFile, './public/' + pngFile, {clip: {x: 228, y: 134, width: 1046 - 228, height: 286 - 134},waitMilliseconds: 5000}, function(){
+			console.log('save ok')
+			take.fromURL('https://tikilighthouse.herokuapp.com/' + htmlFile, './public/' + pngFile, {clip: {x: 228, y: 134, width: 1046 - 228, height: 286 - 134},waitMilliseconds: 5000}, function(a, b){
+				console.log(a, b)
 				//an image of google.com has been saved at ./test.png
 				fetch('https://hooks.slack.com/services/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', {
 				    method: 'post',
