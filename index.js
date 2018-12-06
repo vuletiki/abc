@@ -23,8 +23,8 @@ function launchChromeAndRunLighthouse(url, opts, config = null) {
 var app = express()
 
 app.use(express.static('public'))
-// const BASE_URL = 'https://tikilighthouse.herokuapp.com/'
-const BASE_URL = 'http://localhost:8080/'
+const BASE_URL = 'https://tikilighthouse.herokuapp.com/'
+// const BASE_URL = 'http://localhost:8080/'
 app.get('/', async function (req, res) {
 	res.send(`
 		<h2>Lighthouse report tool</h2>
