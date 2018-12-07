@@ -36,7 +36,8 @@ app.get('/cr', async function (req, res) {
 		console.log('--')
 		console.log('get link:' + pLink)
 		await pageDetail.goto(pLink);
-	 	await pageDetail.evaluate(`document.createElement('img').src='${BASE_URL}/res?data[url]=' + window.location.href + '&data[price]=' + ${getByClass('pdp-price')} + '&data[title]=' + ${getByClass('pdp-product-title')}`);
+	 	console.log(await pageDetail.evaluate(`document.title`));
+	 	//await pageDetail.evaluate(`document.createElement('img').src='${BASE_URL}/res?data[url]=' + window.location.href + '&data[price]=' + ${getByClass('pdp-price')} + '&data[title]=' + ${getByClass('pdp-product-title')}`);
 		console.log('--')
 	}
 	// const pcq = `document.body.querySelectorAll('*[data-tracking="product-card"')[0].getElementsByTagName('a')[0].href`
