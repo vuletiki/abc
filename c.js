@@ -19,7 +19,7 @@ app.get('/cr', async function (req, res) {
 			width: 1390,
 			height: 486
 		},
-		// args: ['--no-sandbox', '--disable-setuid-sandbox']
+		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	})
 	const listLink = req.query.url
 	let pageList = await browser.newPage();
