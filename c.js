@@ -31,7 +31,7 @@ app.get('/cr', async function (req, res) {
 	
 	await pageList.goto(listLink);
 	const totalPc = await pageList.evaluate(`document.body.querySelectorAll('*[data-tracking="product-card"]').length`);
-	for(var i = 0; i < 2; i++) {
+	for(var i = 0; i < totalPc; i++) {
 		const pLink = await pageList.evaluate(`document.body.querySelectorAll('*[data-tracking="product-card"]')[${i}].getElementsByTagName('a')[0].href`);
 		console.log('--')
 		console.log('get link:' + pLink)
