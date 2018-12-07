@@ -10,23 +10,36 @@ app.get('/res', async function (req, res) {
 	console.log(req.query.data)
 	res.send('ok')
 })
-
-app.get('/image.png', async function (req, res) {
-	const browser = await puppeteer.launch({
+let browser = false
+let page = false
+async function getBrowser() {
+	if(browser) {
+		return browser
+	}
+	browser = await puppeteer.launch({
 		defaultViewport: {
 			width: 400,
 			height: 800
 		},
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	})
-	let pageList = await browser.newPage();
+	return browser
+}
+async function getPage() {
+	if(page) {
+		return page
+	}
+	page = await browser.newPage();
+	await page.setCacheEnabled(true)
+	return page
+}
+
+app.get('/image.png', async function (req, res) {
+	const browser = await getBrowser();
+	let pageList = await getPage();
 	await pageList.goto(`https://www.google.com.vn/search?q=${req.query.q}&tbm=isch&tbs=isz:l&hl=en&ved=2ahUKEwiQz5-yt43fAhUbS30KHeOSA7cQlpcCegQIARAE&biw=375&bih=667`);
-	await pageList.waitFor(2000)
 	let b64 = await pageList.evaluate(`document.querySelector('#search a[href^="/imgres"] img').src`);
 	console.log(await pageList.evaluate(`document.title`))
-	console.log('---')
-	console.log(`-${b64}-`)
-	console.log('---')
     var img = new Buffer(b64.split(',')[1], 'base64');
 	res.writeHead(200, {
 		'Content-Type': 'image/png',
