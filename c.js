@@ -12,6 +12,8 @@ app.get('/res', async function (req, res) {
 
 
 app.get('/cr', async function (req, res) {
+	res.send('ok')
+
 	const browser = await puppeteer.launch({
 		defaultViewport: {
 			width: 1390,
@@ -38,8 +40,6 @@ app.get('/cr', async function (req, res) {
 		console.log('--')
 	}
 	// const pcq = `document.body.querySelectorAll('*[data-tracking="product-card"')[0].getElementsByTagName('a')[0].href`
-	
-	res.send('ok')
 })
 
 app.listen(process.env.PORT || 8080);
