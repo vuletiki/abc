@@ -92,4 +92,13 @@ app.get('/lookup', async function (req, res) {
 	// .then(renderTable);
 
 })
-app.listen(process.env.PORT || 8080);
+
+app.get('/ping', async function (req, res) {
+	console.log('ping')
+	res.send('ping')
+})
+app.listen(process.env.PORT || 8080, function() {
+	setInterval(() => {
+		fetch(BASE_URL + '/ping')
+	}, 15 * 60 * 1000)
+});
